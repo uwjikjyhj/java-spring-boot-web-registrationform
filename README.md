@@ -1,1 +1,5 @@
-# java-spring-boot-web-registrationform
+# springboot-registrationform-practice
+
+Project evolution
+
+1. Servlet + JSP + JDBC template
