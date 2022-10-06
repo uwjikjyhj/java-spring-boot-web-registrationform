@@ -7,12 +7,12 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 	<context:annotation-config></context:annotation-config>
-	<context:component-scan base-package="com.registrationform"></context:component-scan>
+	<context:component-scan base-package="com.studentregistration"></context:component-scan>
 
 	<!-- MySQL database -->
 	<bean id="ds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
-		<property name="url" value="jdbc:mysql://localhost:3306/registrationdb"></property>
+		<property name="url" value="jdbc:mysql://localhost:3306/studentsdb"></property>
 		<property name="username" value="root"></property>
 		<property name="password" value=""></property>
 	</bean>

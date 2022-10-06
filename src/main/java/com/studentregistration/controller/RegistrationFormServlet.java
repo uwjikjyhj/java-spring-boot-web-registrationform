@@ -1,4 +1,4 @@
-package com.registrationform.controller;
+package com.studentregistration.controller;
 
 import java.io.IOException;
 
@@ -13,24 +13,22 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
-import com.registrationform.dao.UserDao;
-import com.registrationform.dao.UserDaoTemplateImpl;
-import com.registrationform.dto.User;
+import com.studentregistration.dao.StudentDao;
+import com.studentregistration.dto.Student;
 
 /**
  * Servlet implementation class FormServlet
  */
-//@Component("FormServlet")
-public class FormServlet extends HttpServlet {
+public class RegistrationFormServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Autowired
-	private UserDao dao;
+	private StudentDao dao;
 	
     /**
      * Default constructor. 
      */
-    public FormServlet() {
+    public RegistrationFormServlet() {
         // TODO Auto-generated constructor stub
     }
     
@@ -47,7 +45,7 @@ public class FormServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("form.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("registrationform.jsp");
 		rd.forward(request, response);
 	}
 
@@ -60,11 +58,11 @@ public class FormServlet extends HttpServlet {
 		String mobileNo = request.getParameter("mobile");
 		String address = request.getParameter("addr");
 		
-		User user = new User(name, age, mobileNo, address);
+		Student user = new Student(name, age, mobileNo, address);
 
-		dao.saveUser(user);
+		dao.saveStudent(user);
 		
-		User savedUser = dao.getUserByMobileNo(mobileNo);
+		Student savedUser = dao.getStudentByMobileNo(mobileNo);
 		request.setAttribute("user", savedUser);
 			
 		RequestDispatcher rd = request.getRequestDispatcher("success.jsp");

@@ -1,12 +1,12 @@
-package com.registrationform.dto;
+package com.studentregistration.dto;
 
-public class User {
+public class Student {
 	private String name;
 	private int age;
 	private String mobileNo;
 	private String address;
 	
-	public User(String name, int age, String mobileNo, String address) {
+	public Student(String name, int age, String mobileNo, String address) {
 		super();
 		this.name = name;
 		this.age = age;
