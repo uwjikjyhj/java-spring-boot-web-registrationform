@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1" isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,9 +9,9 @@
 <body>
 	<p>Registered Successfully!!!</p>
 	<p>Your details are</p>
-	<p>Name: <%= request.getParameter("name") %></p>
-	<p>Name: <%= request.getParameter("age") %></p>
-	<p>Name: <%= request.getParameter("mobile") %></p>
-	<p>Name: <%= request.getParameter("addr") %></p>
+	<p>Name: ${ user.name }</p>
+	<p>Age: ${ user.age }</p>
+	<p>Mobile Number: ${ user.mobileNo }</p>
+	<p>Address: ${ user.address }</p>
 </body>
 </html>

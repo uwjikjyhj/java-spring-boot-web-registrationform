@@ -8,11 +8,13 @@
   	<servlet-name>FormServlet</servlet-name>
   	<display-name>FormServlet</display-name>
   	<description></description>
-  	<servlet-class>com.registrationform.FormServlet</servlet-class>
+  	<servlet-class>com.registrationform.controller.FormServlet</servlet-class>
   </servlet>
   <servlet-mapping>
   	<servlet-name>FormServlet</servlet-name>
   	<url-pattern>/</url-pattern>
   </servlet-mapping>
-
+	<listener>
+	    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
 </web-app>
