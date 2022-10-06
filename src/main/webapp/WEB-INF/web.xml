@@ -4,18 +4,12 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
-  <servlet>
-  	<servlet-name>RegistrationFormServlet</servlet-name>
-  	<display-name>RegistrationFormServlet</display-name>
-  	<description></description>
-  	<servlet-class>com.studentregistration.controller.RegistrationFormServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-  	<servlet-name>RegistrationFormServlet</servlet-name>
-  	<url-pattern>/</url-pattern>
-  </servlet-mapping>
-
-	<listener>
-	    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener>
+	<servlet>
+		<servlet-name>registration</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>registration</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
 </web-app>

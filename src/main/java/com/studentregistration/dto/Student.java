@@ -6,6 +6,8 @@ public class Student {
 	private String mobileNo;
 	private String address;
 	
+	public Student() {
+	}
 	public Student(String name, int age, String mobileNo, String address) {
 		super();
 		this.name = name;
