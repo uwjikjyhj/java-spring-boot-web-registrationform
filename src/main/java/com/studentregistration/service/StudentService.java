@@ -1,22 +1,21 @@
-package com.studentregistration.dao;
+package com.studentregistration.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
+import com.studentregistration.dao.IDao;
 import com.studentregistration.dto.Student;
 
-@Component(value = "dao")
-public class StudentDao implements IDao {
+@Component(value = "service")
+public class StudentService implements IService {
 	@Autowired
-	private JdbcTemplate template;
+	IDao dao;
 
 	@Override
 	public void saveStudent(Student student) {
-		String insert = "INSERT INTO students(name, age, mobileno, address) VALUES(?, ?, ?, ?)";
-		template.update(insert, student.getName(), student.getAge(), student.getMobileNo(), student.getAddress());
+		dao.saveStudent(student);
 	}
 
 	@Override
@@ -33,8 +32,8 @@ public class StudentDao implements IDao {
 	
 	@Override
 	public Student getStudentByMobileNo(String mobileNo) {
-		String query = "SELECT * FROM students WHERE id=?";
-		return template.queryForObject(query, new StudentRowMapper(), new Object[]{mobileNo});
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override

@@ -9,14 +9,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.studentregistration.dao.StudentDao;
+import com.studentregistration.dao.IDao;
 import com.studentregistration.dto.Student;
+import com.studentregistration.service.IService;
 
 @Controller
 @RequestMapping("/")
 public class StudentController {
 	@Autowired
-	StudentDao dao;
+	IService service;
 	
 	@RequestMapping(method = RequestMethod.GET, value = "/")
 	public String getRegistrationForm(Map<String, Student> map) {
@@ -27,8 +28,8 @@ public class StudentController {
 	@RequestMapping(method = RequestMethod.POST, value = "/")
 	public String saveStudent(@ModelAttribute("student") Student student,
 			Map<String, Student> map) {
-		dao.saveStudent(student);
-		Student savedUser = dao.getStudentByMobileNo(student.getMobileNo());
+		service.saveStudent(student);
+		Student savedUser = service.getStudentByMobileNo(student.getMobileNo());
 		map.put("student", savedUser);
 		return "studentdetails";
 	}
