@@ -1,6 +1,7 @@
 package com.studentregistration.dao;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -14,38 +15,36 @@ public class StudentDao implements IDao {
 	private JdbcTemplate template;
 
 	@Override
-	public void saveStudent(Student student) {
+	public Student save(Student student) {
 		String insert = "INSERT INTO students(name, age, mobileno, address) VALUES(?, ?, ?, ?)";
 		template.update(insert, student.getName(), student.getAge(), student.getMobileNo(), student.getAddress());
+		return student;
 	}
 
 	@Override
-	public List<Student> getAllStudents() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Student getStudentById(int id) {
+	public List<Student> findAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	
 	@Override
-	public Student getStudentByMobileNo(String mobileNo) {
+	public Optional<Student> findById(int id) {
+		// TODO Auto-generated method stub
+		return Optional.empty();
+	}
+
+	@Override
+	public Optional<Student> findByMoibleNo(String mobileNo) {
 		String query = "SELECT * FROM students WHERE id=?";
-		return template.queryForObject(query, new StudentRowMapper(), new Object[]{mobileNo});
+		Student foundStudent = template.queryForObject(query, new StudentRowMapper(), new Object[]{mobileNo});
+		return Optional.ofNullable(foundStudent);
 	}
 
 	@Override
-	public void updateStudent(Student student) {
+	public Student deleteByMobileNo(int id) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
-	@Override
-	public void removeStudent(Student student) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 }

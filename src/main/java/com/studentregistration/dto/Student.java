@@ -1,6 +1,7 @@
 package com.studentregistration.dto;
 
 public class Student {
+	private Integer id;
 	private String name;
 	private Integer age;
 	private String mobileNo;
@@ -16,6 +17,9 @@ public class Student {
 		this.address = address;
 	}
 	
+	public Integer getId() {
+		return id;
+	}
 	public String getName() {
 		return name;
 	}

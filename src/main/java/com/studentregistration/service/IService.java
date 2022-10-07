@@ -5,7 +5,7 @@ import java.util.List;
 import com.studentregistration.dto.Student;
 
 public interface IService {
-	void saveStudent(Student student);
+	Student saveStudent(Student student);
 	List<Student> getAllStudents();
 	Student getStudentById(int id);
 	Student getStudentByMobileNo(String mobileNo);

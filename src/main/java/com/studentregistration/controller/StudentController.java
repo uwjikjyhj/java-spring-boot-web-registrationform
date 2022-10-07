@@ -28,8 +28,7 @@ public class StudentController {
 	@RequestMapping(method = RequestMethod.POST, value = "/")
 	public String saveStudent(@ModelAttribute("student") Student student,
 			Map<String, Student> map) {
-		service.saveStudent(student);
-		Student savedUser = service.getStudentByMobileNo(student.getMobileNo());
+		Student savedUser = service.saveStudent(student);
 		map.put("student", savedUser);
 		return "studentdetails";
 	}

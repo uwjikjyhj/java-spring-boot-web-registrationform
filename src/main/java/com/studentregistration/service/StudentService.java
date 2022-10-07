@@ -1,6 +1,7 @@
 package com.studentregistration.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -14,8 +15,8 @@ public class StudentService implements IService {
 	IDao dao;
 
 	@Override
-	public void saveStudent(Student student) {
-		dao.saveStudent(student);
+	public Student saveStudent(Student student) {
+		return dao.save(student);
 	}
 
 	@Override
@@ -23,17 +24,17 @@ public class StudentService implements IService {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
 	@Override
 	public Student getStudentById(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+
 	@Override
 	public Student getStudentByMobileNo(String mobileNo) {
-		// TODO Auto-generated method stub
-		return null;
+		Optional<Student> student = dao.findByMoibleNo(mobileNo);
+		return student.isPresent() ? student.get() : null;
 	}
 
 	@Override
@@ -47,4 +48,6 @@ public class StudentService implements IService {
 		// TODO Auto-generated method stub
 		
 	}
+
+	
 }
