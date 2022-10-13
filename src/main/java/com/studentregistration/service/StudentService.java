@@ -4,12 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.studentregistration.dao.IDao;
 import com.studentregistration.dto.Student;
 
-@Component(value = "service")
+@Service
 public class StudentService implements IService {
 	@Autowired
 	IDao dao;
@@ -21,14 +21,13 @@ public class StudentService implements IService {
 
 	@Override
 	public List<Student> getAllStudents() {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.findAll();
 	}
 	
 	@Override
-	public Student getStudentById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Student getStudent(int id) {
+		Optional<Student> student = dao.findById(id);
+		return student.isPresent() ? student.get() : null;
 	}
 
 	@Override
@@ -38,15 +37,8 @@ public class StudentService implements IService {
 	}
 
 	@Override
-	public void updateStudent(Student student) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void removeStudent(Student student) {
-		// TODO Auto-generated method stub
-		
+	public Student deleteStudent(int id) {
+		return dao.deleteById(id);
 	}
 
 	
