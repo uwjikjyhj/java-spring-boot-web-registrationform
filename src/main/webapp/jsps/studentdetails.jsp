@@ -9,9 +9,9 @@
 <body>
 	<p>Registered Successfully!!!</p>
 	<p>Your details are</p>
-	<p>Name: ${ user.name }</p>
-	<p>Age: ${ user.age }</p>
-	<p>Mobile Number: ${ user.mobileNo }</p>
-	<p>Address: ${ user.address }</p>
+	<p>Name: ${ student.name }</p>
+	<p>Age: ${ student.age }</p>
+	<p>Mobile Number: ${ student.mobileNo }</p>
+	<p>Address: ${ student.address }</p>
 </body>
 </html>
