@@ -37,7 +37,24 @@ public class StudentService implements IService {
 	}
 
 	@Override
+	public Student updateStudent(int id, Student student) {
+		Optional<Student> foundStudent = dao.findById(id);
+		Student updatedStudent = foundStudent.isPresent() ? foundStudent.get() : null;
+		
+		if (updatedStudent != null) {
+			updatedStudent.setName(student.getName());
+			updatedStudent.setAge(student.getAge());
+			updatedStudent.setMobileNo(student.getMobileNo());
+			updatedStudent.setAddress(student.getAddress());
+			
+			updatedStudent = dao.save(updatedStudent);
+		}
+		
+		return updatedStudent;
+	}	
+
+	@Override
 	public Student deleteStudent(int id) {
 		return dao.deleteById(id);
-	}	
+	}
 }

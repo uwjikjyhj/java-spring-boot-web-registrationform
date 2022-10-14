@@ -10,6 +10,8 @@ public interface IService {
 	List<Student> getAllStudents();
 	Student getStudent(int id);
 	Student getStudentByMobileNo(String mobileNo);
+	
+	Student updateStudent(int id, Student student);
 		
 	Student deleteStudent(int id);
 }
