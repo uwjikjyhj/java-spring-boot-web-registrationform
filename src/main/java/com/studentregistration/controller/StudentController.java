@@ -2,6 +2,8 @@ package com.studentregistration.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,8 +25,7 @@ public class StudentController {
 	IService service;
 	
 	@PostMapping(path = "/student")
-	public Student createStudent(@RequestBody Student student,
-			BindingResult result, Model model) {
+	public Student createStudent(@Valid @RequestBody Student student) {
 		Student savedStudent = service.saveStudent(student);
 		return savedStudent;
 	}

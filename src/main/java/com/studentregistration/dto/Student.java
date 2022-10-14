@@ -5,6 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.DynamicUpdate;
 
@@ -16,12 +19,15 @@ public class Student {
 	private Integer id;
 	
 	@Column(name = "name")
+	@Size(min = 2, message = "Name must have at least 2 characters")
+	@NotBlank(message = "Name must not be blank")
 	private String name;
 	
 	@Column(name = "age")
 	private Integer age;
 	
 	@Column(name = "mobileno", unique = true)
+	@NotNull(message = "Mobile number is required")
 	private String mobileNo;
 	
 	@Column(name = "address")
