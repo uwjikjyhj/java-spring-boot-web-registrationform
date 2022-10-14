@@ -1,36 +1,44 @@
 package com.studentregistration.controller;
 
-import java.util.Map;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
-import com.studentregistration.dao.IDao;
 import com.studentregistration.dto.Student;
 import com.studentregistration.service.IService;
 
-@Controller
-@RequestMapping("/")
+@RestController
 public class StudentController {
 	@Autowired
 	IService service;
 	
-	@RequestMapping(method = RequestMethod.GET, value = "/")
-	public String getRegistrationForm(Map<String, Student> map) {
-		map.put("student", new Student());
-		return "registrationform";
+	@PostMapping(path = "/student")
+	public Student createStudent(@RequestBody Student student) {
+		Student savedStudent = service.saveStudent(student);
+		return savedStudent;
 	}
 	
-	@RequestMapping(method = RequestMethod.POST, value = "/")
-	public String saveStudent(@ModelAttribute("student") Student student,
-			Map<String, Student> map) {
-		Student savedUser = service.saveStudent(student);
-		map.put("student", savedUser);
-		return "studentdetails";
+	@GetMapping(path = "/student")
+	public List<Student> retrieveAllStudents() {
+		List<Student> studentList = service.getAllStudents();
+		return studentList;
+	}
+
+	@GetMapping(path = "/student/{id}")
+	public Student retriveStudent(@PathVariable int id) {
+		Student student = service.getStudent(id);
+		return student;
+	}
+	
+	@DeleteMapping(path = "/student/{id}")
+	public Student deleteStudent(@PathVariable int id) {
+		Student deletedStudent = service.deleteStudent(id);
+		return deletedStudent;
 	}
 }

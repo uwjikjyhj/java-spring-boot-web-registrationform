@@ -6,7 +6,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.annotations.DynamicUpdate;
+
 @Entity
+@DynamicUpdate
 public class Student {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

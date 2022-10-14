@@ -39,7 +39,5 @@ public class StudentService implements IService {
 	@Override
 	public Student deleteStudent(int id) {
 		return dao.deleteById(id);
-	}
-
-	
+	}	
 }
