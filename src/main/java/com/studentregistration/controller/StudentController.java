@@ -3,6 +3,8 @@ package com.studentregistration.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.studentregistration.dto.Student;
+import com.studentregistration.exception.StudentNotFoundException;
 import com.studentregistration.service.IService;
 
 @RestController
@@ -20,7 +23,8 @@ public class StudentController {
 	IService service;
 	
 	@PostMapping(path = "/student")
-	public Student createStudent(@RequestBody Student student) {
+	public Student createStudent(@RequestBody Student student,
+			BindingResult result, Model model) {
 		Student savedStudent = service.saveStudent(student);
 		return savedStudent;
 	}
@@ -34,6 +38,9 @@ public class StudentController {
 	@GetMapping(path = "/student/{id}")
 	public Student retriveStudent(@PathVariable int id) {
 		Student student = service.getStudent(id);
+		if (student == null) {
+			throw new StudentNotFoundException(id + " not found");
+		}
 		return student;
 	}
 	
