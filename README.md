@@ -2,4 +2,6 @@
 
 Project evolution
 
-1. Servlet + JSP + JDBC template
+1. JDBC template + Servlet + JSP
+2. JPA Repository + Spring MVC
+3. Spring Boot REST + JQuery frontend
